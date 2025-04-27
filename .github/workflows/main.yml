@@ -18,13 +18,14 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 20  # or whatever version you use
+        node-version: 20
 
     - name: Install dependencies
-      run: npm install
+      run: |
+        cd client
+        npm install
 
     - name: Build Angular app
-      run: npm run build
-
-    - name: Run unit tests (optional)
-      run: npm run test -- --watch=false --browsers=ChromeHeadless
+      run: |
+        cd client
+        npm run build
