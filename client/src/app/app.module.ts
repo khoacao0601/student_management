@@ -13,7 +13,6 @@ import { AboutComponent } from './header/about/about.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { MainDetailsPageComponent } from './main-details-page/main-details-page.component';
 
-import { ProfessorTabComponent } from './header/professor-tab/professor-tab.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -30,8 +29,7 @@ import { ProfessorsModule } from './modules/professor/professors.module';
     LoginBoxComponent,
     AboutComponent,
     SignUpComponent,
-    MainDetailsPageComponent,
-    ProfessorTabComponent
+    MainDetailsPageComponent
   ],
   imports: [
     BrowserModule,

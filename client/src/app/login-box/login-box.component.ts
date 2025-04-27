@@ -43,18 +43,13 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
       this.dataLoaded = true;
     });
 
-    this.isProfessor$
-    .pipe(takeUntil(this.destroy$))    // automatically unsubscribes when component destroyed
-    .subscribe(professors => {
-      this.isProfessor = professors;
-      if(this.isProfessor) {
-        this.login_welcome = 'Professor Login';
-        this.store.dispatch(ProfessorActions.setIsProfessor({ isProfessor: true }));
-      } else {
-        this.login_welcome = 'Student Login';
-        this.store.dispatch(ProfessorActions.setIsProfessor({ isProfessor: false }));
-      }
-    })
+    this.isProfessor$                 // automatically unsubscribes when component destroyed
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(isProfessor => {
+      console.log('isProfessor Loginbox 111', isProfessor);
+      this.isProfessor = isProfessor;
+      this.login_welcome = isProfessor ? 'Professor Login' : 'Student Login';
+    });
   }
 
   ngOnDestroy(): void {

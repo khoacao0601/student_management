@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import * as ProfessorActions from '../state/professor/professor.actions';
 import { selectIsProfessor } from '../state/professor/professor.selectors';
 import { take } from 'rxjs';
