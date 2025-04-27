@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import * as ProfessorActions from '../state/professor/professor.actions';
+import { selectIsProfessor } from '../state/professor/professor.selectors';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +12,8 @@ import * as ProfessorActions from '../state/professor/professor.actions';
 })
 export class HeaderComponent implements OnInit {
   public who_login: string = '';
-  public who_login_state: boolean = true;
+
+  isProfessor$ = this.store.select(selectIsProfessor);
   
   constructor (
     private router: Router, 
@@ -18,23 +21,21 @@ export class HeaderComponent implements OnInit {
   ) {}  
 
   ngOnInit(): void {
-    if(this.who_login_state) {
-      this.who_login = 'For Professor';
-    }
+    this.isProfessor$
+      .subscribe(isProfessor => {
+       this.who_login = isProfessor ? 'For Student' : 'For Professor';
+      });
+
   }
 
   isProfessorLogin(): void {
-    console.log('isProfessorLogin', this.who_login_state);
-    if(!this.who_login_state) {
-      this.who_login = 'For Professor';
-      this.who_login_state = true;
-      this.store.dispatch(ProfessorActions.setIsProfessor({ isProfessor: true }));
-    }else{
-      this.who_login = 'For Student';
-      this.who_login_state = false;
-      this.store.dispatch(ProfessorActions.setIsProfessor({ isProfessor: false }));
-    }
-    console.log('isProfessorLoginAfter', this.who_login_state);
+   this.isProfessor$
+   .pipe(take(1))
+   .subscribe(isProfessor => {
+    this.store.dispatch(ProfessorActions.setIsProfessor({
+      isProfessor: !isProfessor
+    }))
+   })
   }
 
   goToAboutPage(): void {
