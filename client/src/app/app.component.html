@@ -1,0 +1,11 @@
+<!-- Header area -->
+<app-header *ngIf="isPreLoginRoute()"></app-header> <!-- Before Login Nav Bar -->
+
+
+<!-- Main content area -->
+<main class="flex-fill container py-4">
+    <router-outlet></router-outlet>
+</main>
+
+<!-- Footer area -->
+<app-footer *ngIf="isPreLoginRoute()"></app-footer>

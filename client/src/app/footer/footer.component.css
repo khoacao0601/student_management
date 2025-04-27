@@ -1,0 +1,25 @@
+   /* Footer */
+  
+   .footer-custom {
+    background-color: #2e8b57; /* SeaGreen */
+    color: #fff;
+    padding: 2rem 0;
+  }
+
+  .footer-custom a {
+    color: #d2b48c; /* Light brown */
+    text-decoration: none;
+  }
+
+  .footer-custom a:hover {
+    text-decoration: underline;
+    color: #f0e0c0;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #ffffff33;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    font-size: 0.875rem;
+    color: #ccc;
+  }

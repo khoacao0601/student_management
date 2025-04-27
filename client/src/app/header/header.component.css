@@ -1,0 +1,38 @@
+ /* Header */
+ .navbar-custom {
+    background-color: #2e8b57; /* SeaGreen */
+  }
+
+  .navbar-brand,
+  .nav-link,
+  .btn-outline-light {
+    color: #fff;
+  }
+
+  .navbar-item{
+    padding-left: 1000%;
+  }
+
+  .nav-link.active,
+  .nav-link:hover {
+    color: #d2b48c; /* Light brown (tan) */
+  }
+
+  .btn-brown {
+    background-color: #d2b48c; /* Light brown */
+    color: #2e8b57;
+    border: none;
+  }
+
+  .btn-brown:hover {
+    background-color: #c3a66f;
+    color: #1e5a3c;
+  }
+
+  .my-active-class {
+    background-color: #d2b48c; /* Light brown */
+    color: #2e8b57;
+    border-radius: 8px;
+    box-shadow: 10px 10px 5px #888888;
+    padding: 5px;
+  }

@@ -1,0 +1,21 @@
+body {
+    position: fixed;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+  }
+  .sidebar {
+    min-height: 100vh;
+    background-color: #343a40;
+    color: white;
+  }
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+  }
+  main {
+    flex: 1;
+  }
+  .card {
+    border-left: 5px solid #198754;
+  }
