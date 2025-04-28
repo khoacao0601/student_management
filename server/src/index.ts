@@ -5,6 +5,8 @@ import professorRoutes from './routes/professors.routes';
 
 const app = express();
 
+app.disable('x-powered-by'); // 🔥 For better security protection, not leak out you're using Express and the version
+
 // Middleware
 app.use(express.json());
 
