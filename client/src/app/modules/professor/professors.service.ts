@@ -8,9 +8,9 @@ import { Professor } from '../../state/professor/professor.model';
 })
 
 export class ProfessorsService {
-    private baseUrl = '/api/professors'; // Your API endpoint
+    private readonly baseUrl = '/api/professors'; // Your API endpoint
 
-    constructor(private http: HttpClient) {}
+    constructor(private readonly http: HttpClient) {}
 
     getAllProfessors(): Observable<Professor[]> {
         return this.http.get<Professor[]>(this.baseUrl);
