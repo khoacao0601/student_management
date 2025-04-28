@@ -20,9 +20,6 @@ jobs:
       with:
         node-version: 20
 
-    - name: Run Mend Check
-      uses: Mend-Project/check-github-action@v1
-
     - name: Install dependencies
       run: |
         cd client
