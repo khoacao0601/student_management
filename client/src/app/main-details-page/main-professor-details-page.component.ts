@@ -6,9 +6,10 @@ import { Subject, takeUntil } from 'rxjs';
 import * as StudentActions from '../state/student/student.actions';
 
 @Component({
-  selector: 'app-main-details-page',
-  templateUrl: './main-professor-details-page.component.html',
-  styleUrls: ['./main-professor-details-page.component.css']
+    selector: 'app-main-details-page',
+    templateUrl: './main-professor-details-page.component.html',
+    styleUrls: ['./main-professor-details-page.component.css'],
+    standalone: false
 })
 export class MainProfessorDetailsPageComponent implements OnInit, OnDestroy {
   public allStudents: any[] = [];

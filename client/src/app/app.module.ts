@@ -8,7 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginBoxComponent } from './login-box/login-box.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AboutComponent } from './header/about/about.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { MainProfessorDetailsPageComponent } from './main-details-page/main-professor-details-page.component';
@@ -20,29 +20,22 @@ import { StudentsModule } from './modules/student/students.module';
 import { ProfessorsModule } from './modules/professor/professors.module';
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomePageComponent,
-    HeaderComponent,
-    FooterComponent,
-    LoginBoxComponent,
-    AboutComponent,
-    SignUpComponent,
-    MainProfessorDetailsPageComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    AppRoutingModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ maxAge: 25 }),
-    StudentsModule,
-    ProfessorsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HomePageComponent,
+        HeaderComponent,
+        FooterComponent,
+        LoginBoxComponent,
+        AboutComponent,
+        SignUpComponent,
+        MainProfessorDetailsPageComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        StoreModule.forRoot({}, {}),
+        EffectsModule.forRoot([]),
+        StoreDevtoolsModule.instrument({ maxAge: 25 }),
+        StudentsModule,
+        ProfessorsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
