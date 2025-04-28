@@ -11,7 +11,7 @@ import { Subject, takeUntil } from 'rxjs';
     selector: 'app-login-box',
     templateUrl: './login-box.component.html',
     styleUrls: ['./login-box.component.css'],
-    standalone: false
+    standalone: false,
 })
 export class LoginBoxComponent implements OnInit, OnDestroy {
   public username: string = '';
