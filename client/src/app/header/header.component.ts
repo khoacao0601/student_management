@@ -17,8 +17,8 @@ export class HeaderComponent implements OnInit {
   isProfessor$ = this.store.select(selectIsProfessor);
   
   constructor (
-    private router: Router, 
-    private store: Store
+    private readonly router: Router, 
+    private readonly store: Store
   ) {}  
 
   ngOnInit(): void {

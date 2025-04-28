@@ -13,10 +13,10 @@ import * as StudentActions from '../state/student/student.actions';
 export class MainProfessorDetailsPageComponent implements OnInit, OnDestroy {
   public allStudents: any[] = [];
 
-  private destroy$ = new Subject<void>(); // for unsubscribing
+  private readonly destroy$ = new Subject<void>(); // for unsubscribing
 
   constructor(
-    private store: Store,
+    private readonly store: Store,
   ) {}
 
   allStudents$ = this.store.select(selectAllStudents)

@@ -24,7 +24,7 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
 
   private userName_checkPoint: boolean = false;
   private isProfessor: boolean = false;
-  private destroy$ = new Subject<void>(); // for unsubscribing
+  private readonly destroy$ = new Subject<void>(); // for unsubscribing
 
   
   students$ = this.store.select(selectAllStudents);
@@ -32,8 +32,8 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
   isProfessor$ = this.store.select(selectIsProfessor);
 
   constructor(
-    private router: Router,
-    private store: Store,
+    private readonly router: Router,
+    private readonly store: Store,
   ) {}
 
   ngOnInit(): void {

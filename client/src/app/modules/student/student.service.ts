@@ -7,9 +7,9 @@ import { Student } from '../../state/student/student.models';
   providedIn: 'root'
 })
 export class StudentService {
-  private baseUrl = '/api/students'; // Your API endpoint
+  private readonly baseUrl = '/api/students'; // Your API endpoint
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   getStudents(): Observable<Student[]> {
     return this.http.get<Student[]>(this.baseUrl);
