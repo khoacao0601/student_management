@@ -87,29 +87,36 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
 
   logInCases(): void {
     if(this.isProfessor) {
-      for (let i=0; i < this.allProfessors.length; i++){
-        if(this.allProfessors[i].last_name.toLowerCase() === this.username && this.allProfessors[i].professor_id === this.password){
-          this.router.navigate(['/details']);
-          this.userName_checkPoint = true;
-          this.login_failure_warning = '';
-          break;
-        } else {
-          this.login_failure_warning = 'Invalid username or password';
-          this.userName_checkPoint = false;
-        }
-      }
+      this.professorLogin();
     } else {
-      for (let i=0; i < this.allStudents.length; i++){
-        if(this.allStudents[i].last_name.toLowerCase() === this.username && this.allStudents[i].phone_number.slice(-4) === this.password){
-          this.router.navigate(['/details']);
-          this.userName_checkPoint = true;
-          this.login_failure_warning = '';
-          break;
-        } else {
-          this.login_failure_warning = 'Invalid username or password';
-          this.userName_checkPoint = false;
-        }
+      this.studentLogin();
+  };
+
+  professorLogin(): void {
+    for (let i=0; i < this.allProfessors.length; i++){
+      if(this.allProfessors[i].last_name.toLowerCase() === this.username && this.allProfessors[i].professor_id === this.password){
+        this.router.navigate(['/details']);
+        this.userName_checkPoint = true;
+        this.login_failure_warning = '';
+        break;
+      } else {
+        this.login_failure_warning = 'Invalid username or password';
+        this.userName_checkPoint = false;
       }
     }
-  }
+  };
+  
+  studentLogin(): void {
+    for (let i=0; i < this.allStudents.length; i++){
+      if(this.allStudents[i].last_name.toLowerCase() === this.username && this.allStudents[i].phone_number.slice(-4) === this.password){
+        this.router.navigate(['/details']);
+        this.userName_checkPoint = true;
+        this.login_failure_warning = '';
+        break;
+      } else {
+        this.login_failure_warning = 'Invalid username or password';
+        this.userName_checkPoint = false;
+      }
+    }
+  };
 }
