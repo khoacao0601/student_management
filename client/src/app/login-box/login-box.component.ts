@@ -90,6 +90,7 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
       this.professorLogin();
     } else {
       this.studentLogin();
+    }
   };
 
   professorLogin(): void {
