@@ -9,8 +9,8 @@ import { Professor } from './professor.model';
 @Injectable()
 export class ProfessorsEffects {
     constructor(
-        private actions$: Actions,
-        private professorsService: ProfessorsService
+        private readonly actions$: Actions,
+        private readonly professorsService: ProfessorsService
     ) {}
     
     loadProfessors$ = createEffect(() =>

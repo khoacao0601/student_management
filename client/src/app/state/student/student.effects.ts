@@ -9,8 +9,8 @@ import { Student } from './student.models';
 @Injectable()
 export class StudentsEffects {
   constructor(
-    private actions$: Actions,
-    private studentService: StudentService
+    private readonly actions$: Actions,
+    private readonly studentService: StudentService
   ) {}
 
   loadStudents$ = createEffect(() =>
