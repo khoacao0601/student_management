@@ -1,0 +1,6 @@
+version: 2
+updates:
+  - package-ecosystem: "npm" # or "pip", "maven", "composer", v.v.
+    directory: "/" # root directory
+    schedule:
+      interval: "daily" # check daily update
