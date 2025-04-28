@@ -8,9 +8,10 @@ import { selectAllProfessors, selectIsProfessor } from '../state/professor/profe
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'app-login-box',
-  templateUrl: './login-box.component.html',
-  styleUrls: ['./login-box.component.css']
+    selector: 'app-login-box',
+    templateUrl: './login-box.component.html',
+    styleUrls: ['./login-box.component.css'],
+    standalone: false
 })
 export class LoginBoxComponent implements OnInit, OnDestroy {
   public username: string = '';
