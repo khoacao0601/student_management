@@ -16,6 +16,7 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
   public username: string = '';
   public password: string = '';
   public allStudents: any[] = [];
+  public allProfessors: any[] = [];
   public dataLoaded: boolean = false;
   public login_failure_warning: string = '';
   public login_welcome: string = '';
@@ -25,7 +26,8 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>(); // for unsubscribing
 
   
-  students$ = this.store.select(selectAllStudents);  
+  students$ = this.store.select(selectAllStudents);
+  professors$ = this.store.select(selectAllProfessors);  
   isProfessor$ = this.store.select(selectIsProfessor);
 
   constructor(
@@ -35,18 +37,24 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.store.dispatch(StudentActions.loadStudents());
+    this.store.dispatch(ProfessorActions.loadAllProfessors());
 
     this.students$
-    .pipe(takeUntil(this.destroy$))    // automatically unsubscribes when component destroyed
+    .pipe(takeUntil(this.destroy$))    // automatically unsubscribes when component destroyed, get All students
     .subscribe(students => {
       this.allStudents = students;
       this.dataLoaded = true;
     });
 
+    this.professors$ // get All professors
+    .pipe(takeUntil(this.destroy$))    // automatically unsubscribes when component destroyed
+    .subscribe(professors => {
+      this.allProfessors = professors;
+    });
+
     this.isProfessor$                 // automatically unsubscribes when component destroyed
     .pipe(takeUntil(this.destroy$))
     .subscribe(isProfessor => {
-      console.log('isProfessor Loginbox 111', isProfessor);
       this.isProfessor = isProfessor;
       this.login_welcome = isProfessor ? 'Professor Login' : 'Student Login';
     });
@@ -66,20 +74,40 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
   }
 
   validateLogin(): void {
-    console.log(this.isProfessor)
+    console.log('boolean', this.isProfessor);
+    
     if(this.username === '' || this.password === '') {
       this.login_failure_warning = 'Please enter both username and password';
       this.userName_checkPoint = false;
-    }
-    for (let i=0; i < this.allStudents.length; i++){
-      if(this.allStudents[i].last_name.toLowerCase() === this.username && this.allStudents[i].phone_number.slice(-4) === this.password){
-        this.router.navigate(['/details']);
-        this.userName_checkPoint = true;
-        this.login_failure_warning = '';
-        break;
-      } else {
-        this.login_failure_warning = 'Invalid username or password';
-        this.userName_checkPoint = false;
+    }    
+
+    this.logInCases();
+  }
+
+  logInCases(): void {
+    if(this.isProfessor) {
+      for (let i=0; i < this.allProfessors.length; i++){
+        if(this.allProfessors[i].last_name.toLowerCase() === this.username && this.allProfessors[i].professor_id === this.password){
+          this.router.navigate(['/details']);
+          this.userName_checkPoint = true;
+          this.login_failure_warning = '';
+          break;
+        } else {
+          this.login_failure_warning = 'Invalid username or password';
+          this.userName_checkPoint = false;
+        }
+      }
+    } else {
+      for (let i=0; i < this.allStudents.length; i++){
+        if(this.allStudents[i].last_name.toLowerCase() === this.username && this.allStudents[i].phone_number.slice(-4) === this.password){
+          this.router.navigate(['/details']);
+          this.userName_checkPoint = true;
+          this.login_failure_warning = '';
+          break;
+        } else {
+          this.login_failure_warning = 'Invalid username or password';
+          this.userName_checkPoint = false;
+        }
       }
     }
   }

@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './header/about/about.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { MainDetailsPageComponent } from './main-details-page/main-details-page.component';
+import { MainProfessorDetailsPageComponent } from './main-details-page/main-professor-details-page.component';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -29,7 +29,7 @@ import { ProfessorsModule } from './modules/professor/professors.module';
     LoginBoxComponent,
     AboutComponent,
     SignUpComponent,
-    MainDetailsPageComponent
+    MainProfessorDetailsPageComponent
   ],
   imports: [
     BrowserModule,
