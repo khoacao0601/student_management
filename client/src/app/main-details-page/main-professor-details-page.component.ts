@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Router } from '@angular/router';
 import { selectAllStudents } from '../state/student/student.selectors';
 import { Subject, takeUntil } from 'rxjs';
 import * as StudentActions from '../state/student/student.actions';
@@ -18,7 +17,6 @@ export class MainProfessorDetailsPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store,
-    private router: Router
   ) {}
 
   allStudents$ = this.store.select(selectAllStudents)
