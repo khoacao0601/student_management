@@ -94,8 +94,8 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
   };
 
   professorLogin(): void {
-    for (let i=0; i < this.allProfessors.length; i++){
-      if(this.allProfessors[i].last_name.toLowerCase() === this.username && this.allProfessors[i].professor_id === this.password){
+    for (const professor of this.allProfessors) {
+      if (professor.last_name.toLowerCase() === this.username && professor.professor_id === this.password) {
         this.router.navigate(['/details']);
         this.userName_checkPoint = true;
         this.login_failure_warning = '';
@@ -108,8 +108,8 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
   };
   
   studentLogin(): void {
-    for (let i=0; i < this.allStudents.length; i++){
-      if(this.allStudents[i].last_name.toLowerCase() === this.username && this.allStudents[i].phone_number.slice(-4) === this.password){
+    for(const student of this.allStudents) {
+      if (student.last_name.toLowerCase() === this.username && student.phone_number.slice(-4) === this.password) {
         this.router.navigate(['/details']);
         this.userName_checkPoint = true;
         this.login_failure_warning = '';
