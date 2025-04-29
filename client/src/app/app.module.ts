@@ -23,7 +23,6 @@ import { StudentsModule } from './modules/student/students.module';
 import { ProfessorsModule } from './modules/professor/professors.module';
 
 //PrimeNg
-import { ApplicationConfig } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
