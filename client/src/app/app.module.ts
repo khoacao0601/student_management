@@ -11,7 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginBoxComponent } from './login-box/login-box.component';
 import { AboutComponent } from './header/about/about.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { MainProfessorDetailsPageComponent } from './main-details-page/main-professor-details-page.component';
+import { MainProfessorDetailsPageComponent } from './main-professor-details-page/main-professor-details-page.component';
 
 // NgRx
 import { StoreModule } from '@ngrx/store';
@@ -31,6 +31,18 @@ import Aura from '@primeng/themes/aura';
 // Routing
 import { RouterModule } from '@angular/router';
 import { routes } from './app-routing.module';
+
+//PrimeNg
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { TagModule } from 'primeng/tag';
+import { InputTextModule }    from 'primeng/inputtext';
+import { DropdownModule }     from 'primeng/dropdown';
+import { CalendarModule }     from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
 
 @NgModule({
@@ -53,6 +65,16 @@ import { routes } from './app-routing.module';
         StudentsModule,
         ProfessorsModule,
         FormsModule,
+        TableModule,
+        ButtonModule,
+        IconFieldModule,
+        InputIconModule,
+        ProgressBarModule,
+        TagModule,
+        InputTextModule,
+        DropdownModule,
+        CalendarModule,
+        BrowserAnimationsModule,
     ],
     providers: [
       provideHttpClient(),
