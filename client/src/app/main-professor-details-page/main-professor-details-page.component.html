@@ -144,7 +144,7 @@
             <!-- FILTER ROW -->
             <tr>
               <!-- Text filter -->
-              <th>
+              <th scope="col">
                 <input
                   #idFilter
                   pInputText
@@ -155,7 +155,7 @@
                 />
               </th>
 
-              <th>
+              <th scope="col">
                 <input
                   #firstFilter
                   pInputText
@@ -166,7 +166,7 @@
                 />
               </th>
 
-              <th>
+              <th scope="col">
                 <input
                   #lastFilter
                   pInputText
@@ -177,7 +177,7 @@
                 />
               </th>
 
-              <th>
+              <th scope="col">
                 <input
                 #emailFilter
                 pInputText
@@ -189,7 +189,7 @@
               </th>
 
               <!-- Dropdown filter -->
-              <th>
+              <th scope="col">
                 <p-dropdown
                   [options]="[
                     { label: 'Male', value: 'male' },
@@ -203,7 +203,7 @@
               </th>
 
               <!-- Date range filter -->
-              <th>
+              <th scope="col">
                 <p-calendar
                   selectionMode="range"
                   dateFormat="mm/dd/yy"
@@ -214,7 +214,7 @@
                 ></p-calendar>
               </th>
 
-              <th>
+              <th scope="col">
                 <input
                   #addrFilter
                   pInputText
@@ -225,7 +225,7 @@
                 />
               </th>
 
-              <th>
+              <th scope="col">
                 <input
                   #phoneFilter
                   pInputText
