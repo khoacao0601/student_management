@@ -1,10 +1,9 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectAllStudents } from '../state/student/student.selectors';
 import { Subject, takeUntil } from 'rxjs';
 import * as StudentActions from '../state/student/student.actions';
 import { Student } from '../state/student/student.models';
-import { Table } from 'primeng/table';
 
 @Component({
     selector: 'app-main-details-page',
