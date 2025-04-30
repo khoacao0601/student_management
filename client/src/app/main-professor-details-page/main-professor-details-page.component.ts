@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectAllStudents } from '../state/student/student.selectors';
 import { Subject, takeUntil } from 'rxjs';
@@ -17,8 +17,6 @@ export class MainProfessorDetailsPageComponent implements OnInit, OnDestroy {
 
   private readonly destroy$ = new Subject<void>(); // for unsubscribing
 
-  loading: boolean = true;
-
   constructor(
     private readonly store: Store,
   ) {}
@@ -26,9 +24,6 @@ export class MainProfessorDetailsPageComponent implements OnInit, OnDestroy {
   allStudents$ = this.store.select(selectAllStudents)
 
   ngOnInit(): void {
-     // start loading
-      this.loading = true;
-
     this.store.dispatch(StudentActions.loadStudents()); // dispatch the action to load students
 
     this.allStudents$
@@ -37,8 +32,6 @@ export class MainProfessorDetailsPageComponent implements OnInit, OnDestroy {
          // make a shallow copy so it's no longer the frozen state array
         this.allStudents = [...students];
         console.log('allStudents', students);
-        // stop loading spinner
-        this.loading = false;
       })
   }
 
@@ -46,31 +39,4 @@ export class MainProfessorDetailsPageComponent implements OnInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
   }
-
-  //Function and Varaiable support PrimeNg Table
-  searchValue: string | undefined;
-
-  clear(table: Table) {
-    table.clear();
-    this.searchValue = ''
-  }
-
-
-  getSeverity(status: string): 'success'|'secondary'|'info'|'warn'|'danger'|'contrast'|undefined {    /*TagSeverity*/
-    switch (status.toLowerCase()) {
-      case 'unqualified':
-        return 'danger';
-      case 'qualified':
-        return 'success';
-      case 'new':
-        return 'info';
-      case 'negotiation':
-        return 'warn';
-      case 'renewal':
-        return 'secondary';
-      default:
-        return undefined;
-    }
-  }
-
 }

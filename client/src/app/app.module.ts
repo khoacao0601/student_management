@@ -41,7 +41,8 @@ import { TagModule } from 'primeng/tag';
 import { InputTextModule }    from 'primeng/inputtext';
 import { DropdownModule }     from 'primeng/dropdown';
 import { CalendarModule }     from 'primeng/calendar';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StudentsTabComponent } from './main-professor-details-page/students-tab/students-tab.component'; 
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       LoginBoxComponent,
       AboutComponent,
       SignUpComponent,
-      MainProfessorDetailsPageComponent
+      MainProfessorDetailsPageComponent,
+      StudentsTabComponent,
     ],
     imports: [
         BrowserModule,
