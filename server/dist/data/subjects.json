@@ -1,0 +1,107 @@
+[
+    {
+        "subject_id": 10,
+        "subject_name": "Mathematics",
+        "subject_credit": 4,
+        "professor": ["Dr. Smith", "Dr. Johnson", "Dr. Clark"],
+        "semester_available": ["Spring", "Fall"]
+    },
+    {
+        "subject_id": 11,
+        "subject_name": "Physics",
+        "subject_credit": 3,
+        "professor": ["Dr. Lewis", "Dr. White", "Dr. King", "Dr. Hall"],
+        "semester_available": ["Spring", "Summer", "Fall"]
+    },
+    {
+        "subject_id": 12,
+        "subject_name": "Chemistry",
+        "subject_credit": 5,
+        "professor": ["Dr. Allen", "Dr. Young", "Dr. Scott"],
+        "semester_available": ["Fall", "Winter"]
+    },
+    {
+        "subject_id": 13,
+        "subject_name": "Biology",
+        "subject_credit": 2,
+        "professor": ["Dr. Adams", "Dr. Nelson", "Dr. Carter", "Dr. Mitchell"],
+        "semester_available": ["Spring", "Summer"]
+    },
+    {
+        "subject_id": 14,
+        "subject_name": "Computer Science",
+        "subject_credit": 5,
+        "professor": ["Dr. Perez", "Dr. Roberts", "Dr. Turner", "Dr. Phillips", "Dr. Campbell"],
+        "semester_available": ["Spring", "Fall", "Winter"]
+    },
+    {
+        "subject_id": 15,
+        "subject_name": "Economics",
+        "subject_credit": 3,
+        "professor": ["Dr. Parker", "Dr. Evans", "Dr. Edwards"],
+        "semester_available": ["Summer", "Fall"]
+    },
+    {
+        "subject_id": 16,
+        "subject_name": "History",
+        "subject_credit": 4,
+        "professor": ["Dr. Collins", "Dr. Stewart", "Dr. Sanchez"],
+        "semester_available": ["Spring", "Fall"]
+    },
+    {
+        "subject_id": 17,
+        "subject_name": "Philosophy",
+        "subject_credit": 2,
+        "professor": ["Dr. Morris", "Dr. Rogers", "Dr. Reed", "Dr. Cook"],
+        "semester_available": ["Winter", "Fall"]
+    },
+    {
+        "subject_id": 18,
+        "subject_name": "Psychology",
+        "subject_credit": 3,
+        "professor": ["Dr. Morgan", "Dr. Bell", "Dr. Murphy"],
+        "semester_available": ["Spring", "Summer", "Fall"]
+    },
+    {
+        "subject_id": 19,
+        "subject_name": "Sociology",
+        "subject_credit": 1,
+        "professor": ["Dr. Bailey", "Dr. Rivera", "Dr. Cooper", "Dr. Richardson"],
+        "semester_available": ["Summer"]
+    },
+    {
+        "subject_id": 20,
+        "subject_name": "Art",
+        "subject_credit": 2,
+        "professor": ["Dr. Cox", "Dr. Howard", "Dr. Ward"],
+        "semester_available": ["Spring", "Summer"]
+    },
+    {
+        "subject_id": 21,
+        "subject_name": "Music",
+        "subject_credit": 3,
+        "professor": ["Dr. Torres", "Dr. Peterson", "Dr. Gray"],
+        "semester_available": ["Fall", "Winter"]
+    },
+    {
+        "subject_id": 22,
+        "subject_name": "Engineering",
+        "subject_credit": 5,
+        "professor": ["Dr. Ramirez", "Dr. James", "Dr. Watson", "Dr. Brooks"],
+        "semester_available": ["Spring", "Summer", "Fall", "Winter"]
+    },
+    {
+        "subject_id": 23,
+        "subject_name": "Business",
+        "subject_credit": 4,
+        "professor": ["Dr. Kelly", "Dr. Sanders", "Dr. Price", "Dr. Bennett"],
+        "semester_available": ["Spring", "Fall"]
+    },
+    {
+        "subject_id": 24,
+        "subject_name": "Political Science",
+        "subject_credit": 2,
+        "professor": ["Dr. Wood", "Dr. Barnes", "Dr. Ross"],
+        "semester_available": ["Spring", "Summer", "Winter"]
+    }
+]
