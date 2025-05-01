@@ -1,9 +1,9 @@
-import express from 'express';
-import studentRoutes from './routes/students.routes';
-import subjectRoutes from './routes/subjects.routes';
-import professorRoutes from './routes/professors.routes';
+import express, { Application } from 'express';
+import studentRoutes from './routes/students.routes.js';
+import subjectRoutes from './routes/subjects.routes.js';
+import professorRoutes from './routes/professors.routes.js';
 
-const app = express();
+const app: Application = express();
 
 app.disable('x-powered-by'); // 🔥 For better security protection, not leak out you're using Express and the version
 

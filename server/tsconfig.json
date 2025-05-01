@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
-    "outDir": "dist",
-    "rootDir": "src",
-    "strict": true,
-    "esModuleInterop": true,
+    "target": "ES2020",                   // support async/await, top-level await
+    "module": "NodeNext",                 // use for ESM (import/export style)
+    "moduleResolution": "NodeNext",       // need to match with module
+    "outDir": "./dist",                   // folder build output
+    "rootDir": "./src",                   // store file root source 
+    "strict": true,                       // turn on strict mode TypeScript
+    "esModuleInterop": true,              // support import style Node
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,                  // pass by check type dependencies to prevent bugs
     "resolveJsonModule": true,
-  }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }
