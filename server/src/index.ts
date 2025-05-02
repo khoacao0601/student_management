@@ -1,7 +1,4 @@
 import express, { Application } from 'express';
-import studentRoutes from './routes/students.routes.js';
-import subjectRoutes from './routes/subjects.routes.js';
-import professorRoutes from './routes/professors.routes.js';
 
 const app: Application = express();
 
@@ -9,11 +6,6 @@ app.disable('x-powered-by'); // 🔥 For better security protection, not leak ou
 
 // Middleware
 app.use(express.json());
-
-// Routes
-app.use('/students', studentRoutes);
-app.use('/subjects', subjectRoutes);
-app.use('/professors', professorRoutes)
 
 // Default route
 app.get('/', (_req, res) => {
