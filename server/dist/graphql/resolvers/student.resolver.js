@@ -10,27 +10,40 @@ const readStudents = () => {
 const writeStudents = (students) => fs.writeFileSync(studentsPath, JSON.stringify(students, null, 2), 'utf-8');
 export default {
     Query: {
-        students: () => {
-            const list = readStudents();
-            return list;
+        students: () => readStudents(),
+        student: (_, { student_id }) => {
+            return readStudents().find(s => s.student_id === student_id) || null;
         },
     },
     Mutation: {
-        addStudent: (_, args) => {
+        addStudent: (_, { input }) => {
             const students = readStudents();
-            students.push(args);
+            // Push the new student from the input object
+            students.push(input);
             writeStudents(students);
-            pubsub.publish('STUDENT_ADDED', { studentAdded: args });
-            return args;
+            // Publish subscription event
+            pubsub.publish('STUDENT_ADDED', { studentAdded: input });
+            return input;
+        },
+        removeStudent: (_, { student_id }) => {
+            const students = readStudents();
+            const index = students.findIndex(s => s.student_id === student_id);
+            if (index === -1)
+                throw new Error(`Student with id ${student_id} not found`);
+            const [removed] = students.splice(index, 1);
+            writeStudents(students);
+            pubsub.publish('STUDENT_REMOVED', { studentRemoved: removed });
+            return removed;
         },
     },
     Subscription: {
-        // asyncIterator is ready on PubSub v1.x
         studentAdded: {
             subscribe: () => pubsub.asyncIterator('STUDENT_ADDED'),
-            resolve: (payload) => {
-                return payload.studentAdded;
-            },
+            resolve: (payload) => payload.studentAdded,
+        },
+        studentRemoved: {
+            subscribe: () => pubsub.asyncIterator('STUDENT_REMOVED'),
+            resolve: (payload) => payload.studentRemoved,
         },
     },
 };

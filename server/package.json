@@ -16,7 +16,7 @@
     "graphql": "^16.11.0",
     "graphql-subscriptions": "^1.1.0",
     "graphql-tag": "^2.12.6",
-    "graphql-ws": "^5.10.1",
+    "graphql-ws": "^5.16.2",
     "ws": "^8.18.1"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, inject, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { provideHttpClient } from '@angular/common/http';
@@ -44,6 +44,17 @@ import { CalendarModule }     from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentsTabComponent } from './main-professor-details-page/students-tab/students-tab.component'; 
 
+// GraphQL
+import { provideApollo }           from 'apollo-angular';
+import { StudentsEffects } from './state/student/student.effects';
+import { split, ApolloClientOptions, InMemoryCache, createHttpLink } from '@apollo/client/core';
+import { getMainDefinition } from '@apollo/client/utilities';
+import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
+import { createClient } from 'graphql-ws';
+import { HttpLink } from 'apollo-angular/http';
+import { studentsReducer } from './state/student/student.reducer';
+import { StudentDetailsPageComponent } from './student-details-page/student-details-page.component';
+
 
 @NgModule({
     declarations: [
@@ -56,12 +67,14 @@ import { StudentsTabComponent } from './main-professor-details-page/students-tab
       SignUpComponent,
       MainProfessorDetailsPageComponent,
       StudentsTabComponent,
+      StudentDetailsPageComponent,
     ],
     imports: [
         BrowserModule,
         RouterModule.forRoot(routes),
         StoreModule.forRoot({}),
-        EffectsModule.forRoot([]),
+        StoreModule.forFeature('students', studentsReducer),
+        EffectsModule.forRoot([StudentsEffects]),
         StoreDevtoolsModule.instrument({ maxAge: 25 }),
         StudentsModule,
         ProfessorsModule,
@@ -85,7 +98,30 @@ import { StudentsTabComponent } from './main-professor-details-page/students-tab
             theme: {
                 preset: Aura
             }
-        })
+        }),
+        provideApollo((): ApolloClientOptions<any> => {
+          const http = inject(HttpLink).create({
+            uri: 'http://localhost:3000/graphql',
+          });
+    
+          const ws = new GraphQLWsLink(
+            createClient({ url: 'ws://localhost:3000/graphql' })
+          );
+    
+          const link = split(
+            ({ query }) => {
+              const def = getMainDefinition(query);
+              return def.kind === 'OperationDefinition' && def.operation === 'subscription';
+            },
+            ws,
+            http
+          );
+    
+          return {
+            link,
+            cache: new InMemoryCache(),
+          };
+        }),
     ],
     bootstrap: [AppComponent],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

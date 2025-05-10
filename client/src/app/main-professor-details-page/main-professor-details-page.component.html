@@ -22,7 +22,7 @@
   <main class="container-fluid p-4">
     <!-- Top Bar -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h2>Welcome, Admin</h2>
+      <h2>Welcome, </h2>
       <div>
        <!-- Top Bar Right Side -->
        <div class="dropdown">
@@ -44,7 +44,7 @@
       <div class="col-md-3">
         <div class="card p-3">
           <h5>Total Students</h5>
-          <h2>{{ allStudents.length }}</h2>
+          <h2>{{ (allStudents$ | async)?.length  }}</h2>
         </div>
       </div>
       <div class="col-md-3">
