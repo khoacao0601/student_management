@@ -109,10 +109,13 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
   
   studentLogin(): void {
     for(const student of this.allStudents) {
-      if (student.last_name.toLowerCase() === this.username && student.phone_number.slice(-4) === this.password) {
-        this.router.navigate(['/details']);
+      if (student.last_name.toLowerCase() === this.username && student.student_id.slice(-4) === this.password) {
+        console.log('student', student);
+        this.router.navigate(['/details/currentStudent']);
         this.userName_checkPoint = true;
         this.login_failure_warning = '';
+        //save current student to local storage
+        localStorage.setItem('currentStudent', JSON.stringify(student));
         break;
       } else {
         this.login_failure_warning = 'Invalid username or password';

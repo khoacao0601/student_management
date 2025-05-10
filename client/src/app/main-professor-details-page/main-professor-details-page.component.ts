@@ -5,6 +5,9 @@ import { Subject, takeUntil } from 'rxjs';
 import * as StudentActions from '../state/student/student.actions';
 import { Student } from '../state/student/student.models';
 
+// Removed misplaced constructor
+
+
 @Component({
     selector: 'app-main-details-page',
     templateUrl: './main-professor-details-page.component.html',
@@ -28,8 +31,7 @@ export class MainProfessorDetailsPageComponent implements OnInit, OnDestroy {
     this.allStudents$
       .pipe(takeUntil(this.destroy$)) // automatically unsubscribes when component destroyed
       .subscribe(students => {
-         // make a shallow copy so it's no longer the frozen state array
-        this.allStudents = [...students];
+        this.allStudents = students;
         console.log('allStudents', students);
       })
   }

@@ -9,17 +9,31 @@ export interface StudentState {
 
 export const initialState: StudentState = {
   students: [],
-  error: null
+  error: null,
 };
 
 export const studentsReducer = createReducer(
   initialState,
   on(StudentActions.loadStudentsSuccess, (state, { students }) => ({
     ...state,
-    students
+    students,
+    error: null,
   })),
   on(StudentActions.loadStudentsFailure, (state, { error }) => ({
     ...state,
-    error
+    error,
+  })),
+  on(StudentActions.addStudentSuccess, (state, { student }) => {
+    const alreadyExists = state.students.some(s => s.student_id === student.student_id);
+    return {
+      ...state,
+      students: alreadyExists ? state.students : [...state.students, student],
+      error: null,
+    };
+  }),
+  on(StudentActions.addStudentFailure, (state, { error }) => ({
+    ...state,
+    error,
   }))
 );
+

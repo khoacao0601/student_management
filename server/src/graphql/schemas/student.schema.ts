@@ -1,8 +1,8 @@
-import { gql } from 'graphql-tag'; // ✅ using destructuring import
+import { gql } from 'graphql-tag';
 
 export default gql`
-  # Interface Student in GraphQL
-  type Student {                    
+  # Input type for creating a Student
+  input StudentInput {
     student_id: ID!
     first_name: String!
     last_name: String!
@@ -13,27 +13,42 @@ export default gql`
     phone_number: String!
   }
 
-  # Queries (GET in REST)
+  # Student type
+  type Student {
+    student_id: ID!
+    first_name: String!
+    last_name: String!
+    email: String!
+    gender: String!
+    date_of_birth: String!
+    address: String!
+    phone_number: String!
+  }
+
+  # Queries
   type Query {
-    students: [Student]
+    # Get all students
+    students: [Student!]!
+
+    # Get a single student by ID
+    student(student_id: ID!): Student
   }
 
-  # Mutations (POST, PUT, DELETE in REST)
+  # Mutations
   type Mutation {
-    addStudent(
-      student_id: ID!
-      first_name: String!
-      last_name: String!
-      email: String!
-      gender: String!
-      date_of_birth: String!
-      address: String!
-      phone_number: String!
-    ): Student
+    # Add a new student
+    addStudent(input: StudentInput!): Student!
+
+    # Remove a student by ID
+    removeStudent(student_id: ID!): Student!
   }
 
-  # Subscriptions (WebSocket, real-time data)
+  # Subscriptions
   type Subscription {
-    studentAdded: Student
+    # Fired when a new student is added
+    studentAdded: Student!
+
+    # Fired when a student is removed
+    studentRemoved: Student!
   }
 `;
