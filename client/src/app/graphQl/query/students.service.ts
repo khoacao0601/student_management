@@ -20,7 +20,7 @@ const ADD_STUDENT = gql`
 
 @Injectable({ providedIn: 'root' })
 export class StudentServiceGraphQL {
-  constructor(private apollo: Apollo) {}
+  constructor(private readonly apollo: Apollo) {}
 
     // 1) Query: get students list
     //    - Using watchQuery to get values from cache

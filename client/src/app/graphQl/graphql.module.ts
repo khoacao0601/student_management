@@ -1,13 +1,12 @@
 // graphql.modules.ts
 import { bootstrapApplication } from '@angular/platform-browser';
-import { inject, NgModule } from '@angular/core';
+import { inject } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
 import { provideApollo } from 'apollo-angular';
 import {
   InMemoryCache,
   split,
   ApolloClientOptions,
-  HttpLink as ApolloHttpLink,
   // getMainDefinition is imported from utilities
 } from '@apollo/client/core';
 import { getMainDefinition } from '@apollo/client/utilities';

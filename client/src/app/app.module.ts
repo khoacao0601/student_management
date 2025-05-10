@@ -47,7 +47,7 @@ import { StudentsTabComponent } from './main-professor-details-page/students-tab
 // GraphQL
 import { provideApollo }           from 'apollo-angular';
 import { StudentsEffects } from './state/student/student.effects';
-import { split, ApolloClientOptions, InMemoryCache, createHttpLink } from '@apollo/client/core';
+import { split, ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
 import { createClient } from 'graphql-ws';
