@@ -7,7 +7,7 @@ import { Student } from '../../state/student/student.models';
   providedIn: 'root',
 })
 export class StudentService {
-  constructor(private apollo: Apollo) {}
+  constructor(private readonly apollo: Apollo) {}
 
   getStudents(): Observable<Student[]> {
     return this.apollo
