@@ -44,6 +44,10 @@ import { CalendarModule }     from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentsTabComponent } from './main-professor-details-page/students-tab/students-tab.component'; 
 
+// GraphQL
+import { GraphQLModule } from '../app/graphlQl/graphql.module';
+import { StudentDetailsPageComponent } from './student-details-page/student-details-page.component';
+
 
 @NgModule({
     declarations: [
@@ -56,6 +60,7 @@ import { StudentsTabComponent } from './main-professor-details-page/students-tab
       SignUpComponent,
       MainProfessorDetailsPageComponent,
       StudentsTabComponent,
+      StudentDetailsPageComponent,
     ],
     imports: [
         BrowserModule,
@@ -76,6 +81,7 @@ import { StudentsTabComponent } from './main-professor-details-page/students-tab
         DropdownModule,
         CalendarModule,
         BrowserAnimationsModule,
+        GraphQLModule
     ],
     providers: [
       provideHttpClient(),
