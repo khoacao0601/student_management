@@ -1,17 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Apollo, gql } from 'apollo-angular';
+import { Observable, map } from 'rxjs';
 import { Student } from '../../state/student/student.models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StudentService {
-  private readonly baseUrl = '/api/students'; // Your API endpoint
-
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly apollo: Apollo) {}
 
   getStudents(): Observable<Student[]> {
-    return this.http.get<Student[]>(this.baseUrl);
+    return this.apollo
+      .watchQuery<{ students: Student[] }>({
+        query: gql`
+          query GetStudents {
+            students {
+              student_id
+              last_name
+              email
+            }
+          }
+        `,
+      })
+      .valueChanges.pipe(map(result => result.data.students));
   }
 }
