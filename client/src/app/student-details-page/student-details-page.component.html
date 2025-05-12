@@ -1,1 +1,54 @@
-<p>student-details-page works!</p>
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-12">
+        <h2>Student Details</h2>
+        <div class="card">
+          <div class="card-header">
+            <h4>{{ student.first_name }} {{ student.last_name }}</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="studentId" class="form-label">Student ID</label>
+                  <input type="text" class="form-control" id="studentId" [value]="student.student_id" disabled />
+                </div>
+                <div class="mb-3">
+                  <label for="firstName" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="firstName" [value]="student.first_name" disabled />
+                </div>
+                <div class="mb-3">
+                  <label for="lastName" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="lastName" [value]="student.last_name" disabled />
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" [value]="student.email" disabled />
+                </div>
+              </div>
+  
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="gender" class="form-label">Gender</label>
+                  <input type="text" class="form-control" id="gender" [value]="student.gender" disabled />
+                </div>
+                <div class="mb-3">
+                  <label for="dob" class="form-label">Date of Birth</label>
+                  <input type="text" class="form-control" id="dob" [value]="student.date_of_birth" disabled />
+                </div>
+                <div class="mb-3">
+                  <label for="address" class="form-label">Address</label>
+                  <input type="text" class="form-control" id="address" [value]="student.address" disabled />
+                </div>
+                <div class="mb-3">
+                  <label for="phoneNumber" class="form-label">Phone Number</label>
+                  <input type="text" class="form-control" id="phoneNumber" [value]="student.phone_number" disabled />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

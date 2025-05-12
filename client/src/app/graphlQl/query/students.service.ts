@@ -38,10 +38,13 @@ export class StudentServiceGraphQL {
           query GetStudents {
             students {
                 student_id
-                first_name
                 last_name
+                first_name
                 email
                 gender
+                date_of_birth
+                address
+                phone_number
             }
           }
         `
