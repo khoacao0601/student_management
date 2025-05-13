@@ -3,14 +3,14 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as StudentActions from './student.actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { StudentService } from '../../modules/student/student.service';
+import { StudentServiceGraphQL } from '../../graphlQl/query/students.service';
 import { Student } from './student.models';
 
 @Injectable()
 export class StudentsEffects {
   constructor(
     private readonly actions$: Actions,
-    private readonly studentService: StudentService
+    private readonly studentService: StudentServiceGraphQL
   ) {}
 
   loadStudents$ = createEffect(() =>
