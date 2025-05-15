@@ -1,11 +1,12 @@
-// src/graphql/resolvers/auth.resolver.ts
-import { usersLogin } from '../../data/dummy-usersLogin.js';
 import bcrypt from 'bcryptjs';
 import { generateToken } from '../../utils/auth.utils.js';
+import { studentLogin } from '../../data/student-login-bcrypt-hashsync.js';
 const authResolver = {
     Mutation: {
         login: async (_, { user_name, password }) => {
-            const user = usersLogin.find(u => u.user_name === user_name);
+            // ✅ Combine lists
+            const allUsers = [...studentLogin];
+            const user = allUsers.find((u) => u.user_name === user_name);
             if (!user || !bcrypt.compareSync(password, user.password)) {
                 throw new Error('Invalid credentials');
             }
