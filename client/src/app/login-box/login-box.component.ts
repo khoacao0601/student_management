@@ -6,6 +6,7 @@ import * as ProfessorActions from '../state/professor/professor.actions';
 import { selectAllStudents } from '../state/student/student.selectors';
 import { selectAllProfessors, selectIsProfessor } from '../state/professor/professor.selectors';
 import { Subject, takeUntil } from 'rxjs';
+import { AuthService } from '../graphlQl/auth.service';
 
 @Component({
     selector: 'app-login-box',
@@ -34,6 +35,7 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
   constructor(
     private readonly router: Router,
     private readonly store: Store,
+    private readonly authService: AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -89,7 +91,7 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
     if(this.isProfessor) {
       this.professorLogin();
     } else {
-      this.studentLogin();
+      this.studentLogin(this.username, this.password);
     }
   };
 
@@ -107,19 +109,27 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
     }
   };
   
-  studentLogin(): void {
-    for(const student of this.allStudents) {
-      console.log('student', student);
-      if (student.last_name.toLowerCase() === this.username && student.student_id.slice(-4) === this.password) {
+  studentLogin(user_name: string, password: string): void {
+    this.authService.login(user_name, password).subscribe({
+      next: (user: any) => {
+        console.log('Login successfull:', user);
         this.router.navigate(['/details/studentDetails']);
-        localStorage.setItem('student', JSON.stringify(student));
-        this.userName_checkPoint = true;
-        this.login_failure_warning = '';
-        break;
-      } else {
-        this.login_failure_warning = 'Invalid username or password';
-        this.userName_checkPoint = false;
+      },
+      error: (err: any) => {
+        console.error('Login fail:', err);
       }
-    }
+    });
   };
+
+  logout() {
+    localStorage.removeItem('token');
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
 }
