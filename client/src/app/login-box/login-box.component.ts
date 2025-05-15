@@ -5,9 +5,8 @@ import * as StudentActions from '../state/student/student.actions';
 import * as ProfessorActions from '../state/professor/professor.actions';
 import { selectAllStudents } from '../state/student/student.selectors';
 import { selectAllProfessors, selectIsProfessor } from '../state/professor/professor.selectors';
-import { map, Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { AuthService } from '../graphlQl/auth.service';
-import { LOGIN_MUTATION } from '../graphlQl/query/login.service';
 
 @Component({
     selector: 'app-login-box',

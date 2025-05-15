@@ -1,7 +1,5 @@
 import bcrypt from 'bcryptjs';
 import { generateToken } from '../../utils/auth.utils.js';
-import path from 'path';
-import fs from 'fs';
 import { studentLogin } from '../../data/student-login-bcrypt-hashsync.js';
 
 
